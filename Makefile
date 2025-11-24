@@ -18,4 +18,4 @@ clean:
 	@rm -rf ./bin
 #
 
-.PHONY: all compile install clean
+.PHONY: all install clean
