@@ -10,8 +10,8 @@ compile:
 	$(CXX) $(CXXFLAGS) ./src/epoll_server.cpp -o ./bin/epoll_server $(LDFLAGS)
 
 install:
-	sudo cp ./bin/epoll_server /usr/local/bin/
-	sudo cp epoll_server.service /etc/systemd/system/
+	sudo cp ./bin/epoll_server /usr/local/bin
+	sudo cp epoll_server.service /etc/systemd/system
 
 # delete build directory
 clean: 
