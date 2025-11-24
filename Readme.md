@@ -8,32 +8,36 @@
 	- /shutdown - завершает работу сервера
 - обработка сообщений - зеркалирует клиенту
 
-### Установка
-В представленном репозитории имеется .deb пакет который установит
-бинарный файл в /usr/local/bin/ и systemd unit в /etc/systemd/system/.
+## Установка
+Вы можете установить программу из .deb пакета или собрать из исходного кода с помощью Makefile.
+Имейте ввиду что оба варианта установки закинут ./bin/epoll_server в /usr/local/bin/ и epoll_server.service в /etc/systemd/system/.
 
-установка:
-```sudo dpkg --install epoll-server_1.0_amd64.deb```
+### Установка из .deb пакета:
+```sudo apt install ./epoll-server_1.0_amd64.deb```
 
 ### Сборка из исходников
-В репозитории так же есть makefile на случай если вы захоитие собрать программу
-из исходных файлов. Убедитесь что в вашей системе есть утилиты make и g++.
 
-установка и сборка:
+установка зависимостей:
 ```
-git clone 
-cd ./
+sudo apt install g++ make libstdc++6 libgcc-s1 libc6
+```
+
+сборка:
+```
+git clone https://github.com/udult/NDM_systems_TZ.git
+cd ./NDM_systems_TZ
 make
-
+sudo make install
 ```
-epoll_server соберется в папку ./bin. после этого необходимо переместить ./bin/epoll_server в 
-/usr/local/bin/ и epoll_server.service в /etc/systemd/system/ любым удобным для вас способом.
 
 В представленном Makefile есть цель clean которая удаляет дерикторию сборки (./bin) со всем ее содержимым.
 
 ### Запуск
 После успешной установки вы можете запустись службу:
-```sudo systemctl start epoll_server```
+```
+sudo systemctl daemon-reload
+sudo systemctl start epoll_server
+```
 
 Сервер будет принимать подключения по адресу 127.0.0.1:2000
 
